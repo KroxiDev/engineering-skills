@@ -29,8 +29,6 @@ const CLAUDE_OVERRIDES = {
     argumentHint: "Un workflow a diseñar, o nada para salir a buscar uno",
     disableModelInvocation: true,
   },
-  qa: { disableModelInvocation: true },
-  "request-refactor-plan": { disableModelInvocation: true },
   "setup-ts-deep-modules": { disableModelInvocation: true },
   teach: {
     argumentHint: "¿Sobre qué te gustaría aprender?",
@@ -39,9 +37,8 @@ const CLAUDE_OVERRIDES = {
   "to-spec": { disableModelInvocation: true },
   "to-tickets": { disableModelInvocation: true },
   triage: { disableModelInvocation: true },
+  "wait-what": { disableModelInvocation: true },
   wayfinder: { disableModelInvocation: true },
-  wizard: { disableModelInvocation: true },
-  "writing-great-skills": { disableModelInvocation: true },
 };
 
 const repositoryRoot = dirname(dirname(fileURLToPath(import.meta.url)));

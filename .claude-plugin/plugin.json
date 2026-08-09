@@ -1,7 +1,7 @@
 {
   "name": "engineering-skills",
   "displayName": "Engineering Skills",
-  "description": "Colección de 31 skills de ingeniería en español neutro para Claude Code y Codex: diseño de codebase, TDD, revisión de código, diagnóstico de bugs, planificación, triage, traspasos y construcción de skills.",
+  "description": "Colección de 30 skills de ingeniería en español neutro para Claude Code y Codex: diseño de codebase, TDD, revisión de código, diagnóstico de bugs, planificación, triage, traspasos y construcción de skills.",
   "author": {
     "name": "Fabrizio Bruzzese",
     "email": "bruzzesefabrizio@gmail.com",

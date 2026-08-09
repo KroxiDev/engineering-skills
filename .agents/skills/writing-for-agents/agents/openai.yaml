@@ -1,0 +1,4 @@
+interface:
+  display_name: "Escribir para agentes"
+  short_description: "Escribe documentos que los agentes consumen"
+  default_prompt: "Usa $writing-for-agents para revisar este documento."

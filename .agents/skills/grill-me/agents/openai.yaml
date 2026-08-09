@@ -1,6 +1,6 @@
 interface:
   display_name: "Entrevistarme"
-  short_description: "Precisa un plan una pregunta por vez"
+  short_description: "Precisa un plan por rondas de preguntas"
   default_prompt: "Usa $grill-me para entrevistarme sobre este diseño."
 
 policy:

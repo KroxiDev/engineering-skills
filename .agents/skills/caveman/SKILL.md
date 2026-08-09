@@ -42,11 +42,11 @@ Patrón: `[cosa] [acción] [motivo]. [siguiente paso].`
 
 ## Intensidad
 
-| Nivel | Qué cambia |
-| :---- | :--------- |
-| **lite** (por defecto) | Sin muletillas ni coberturas. Se mantienen los artículos y las frases completas. Profesional pero apretado. |
-| **full** | Caer artículos, fragmentos permitidos, sinónimos cortos. El cavernícola clásico. Sin narrar herramientas, sin tablas decorativas ni emoji, sin volcados largos de logs salvo petición. Siglas estándar sí; abreviaturas inventadas no. |
-| **ultra** | Quitar conjunciones cuando la relación causa-efecto siga siendo inequívoca. Una palabra cuando una palabra basta. Cada dato se dice una sola vez. Sin abreviaturas de prosa (cfg, impl, req, res, fn, auth), sin flechas (X → Y): medido, no ahorran tokens y cuestan claridad. Símbolos de código, nombres de función, nombres de API y cadenas de error: no se tocan nunca. |
+| Nivel                  | Qué cambia                                                                                                                                                                                                                                                                                                                                                                    |
+| :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **lite** (por defecto) | Sin muletillas ni coberturas. Se mantienen los artículos y las frases completas. Profesional pero apretado.                                                                                                                                                                                                                                                                   |
+| **full**               | Caer artículos, fragmentos permitidos, sinónimos cortos. El cavernícola clásico. Sin narrar herramientas, sin tablas decorativas ni emoji, sin volcados largos de logs salvo petición. Siglas estándar sí; abreviaturas inventadas no.                                                                                                                                        |
+| **ultra**              | Quitar conjunciones cuando la relación causa-efecto siga siendo inequívoca. Una palabra cuando una palabra basta. Cada dato se dice una sola vez. Sin abreviaturas de prosa (cfg, impl, req, res, fn, auth), sin flechas (X → Y): medido, no ahorran tokens y cuestan claridad. Símbolos de código, nombres de función, nombres de API y cadenas de error: no se tocan nunca. |
 
 Ejemplo — "¿Por qué se vuelve a renderizar el componente de React?"
 
@@ -86,6 +86,6 @@ Ejemplo — operación destructiva:
 
 **Nada que quede escrito fuera del chat va en caveman.** Código, mensajes de commit, descripciones de PR, issues, documentación y cualquier archivo en disco se escriben en estilo normal, siempre.
 
-**Los demás skills mandan sobre el formato.** Si hay otro skill del set gobernando el trabajo (`code-review`, `tdd`, `qa`, `to-spec`, `continue-task`, `triage`...), su formato de salida se respeta tal cual: informes, tablas, cuerpos de issue, specs y documentos de traspaso se producen íntegros y en estilo normal. Caveman queda suspendido mientras se genera esa salida y se reanuda en la conversación corriente. Ante cualquier choque entre este skill y otro, gana el otro.
+**Los demás skills mandan sobre el formato.** Si hay otro skill del set gobernando el trabajo (`code-review`, `tdd`, `to-spec`, `continue-task`, `triage`...), su formato de salida se respeta tal cual: informes, tablas, cuerpos de issue, specs y documentos de traspaso se producen íntegros y en estilo normal. Caveman queda suspendido mientras se genera esa salida y se reanuda en la conversación corriente. Ante cualquier choque entre este skill y otro, gana el otro.
 
 Las preguntas al usuario, los avisos de bloqueo y los reportes de fallo se dicen completos: nunca comprimir hasta el punto de que el usuario no pueda decidir.

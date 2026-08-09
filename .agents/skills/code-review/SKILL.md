@@ -40,7 +40,7 @@ Además de lo que documente el repo, el eje de Estándares siempre lleva consigo
 - **El repo prevalece.** Un estándar documentado del repo siempre gana; donde avale algo que la línea base marcaría, suprimir el smell.
 - **Siempre es un juicio.** Cada smell es una heurística etiquetada ("posible Feature Envy"), nunca una violación dura — y, como cualquier estándar aquí, omitir lo que el tooling ya haga cumplir.
 
-Cada smell se lee *qué es* → *cómo corregirlo*; contrastarlo contra el diff:
+Cada smell se lee _qué es_ → _cómo corregirlo_; contrastarlo contra el diff:
 
 - **Mysterious Name** — una función, variable o tipo cuyo nombre no revela qué hace o qué contiene. → renombrarlo; si no surge un nombre honesto, el diseño está turbio.
 - **Duplicated Code** — la misma forma de lógica aparece en más de un hunk o archivo del cambio. → extraer la forma compartida y llamarla desde ambos sitios.
@@ -56,8 +56,6 @@ Cada smell se lee *qué es* → *cómo corregirlo*; contrastarlo contra el diff:
 - **Refused Bequest** — una subclase o implementador que ignora o sobreescribe la mayor parte de lo que hereda. → abandonar la herencia y usar composición.
 
 ### 4. Lanzar ambos subagentes en paralelo
-
-Despachar los dos subagentes de una sola vez, no uno tras otro, para que corran en paralelo. Ambos son de propósito general y necesitan leer el repo y ejecutar comandos.
 
 **Prompt del subagente de Estándares** — incluir:
 

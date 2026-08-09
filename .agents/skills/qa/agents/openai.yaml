@@ -1,7 +1,0 @@
-interface:
-  display_name: "Sesión de QA"
-  short_description: "Convierte reportes de QA en issues"
-  default_prompt: "Usa $qa para precisar este problema y preparar un issue."
-
-policy:
-  allow_implicit_invocation: false

@@ -9,6 +9,12 @@ Una disciplina para bugs difíciles. Saltarse fases solo cuando esté explícita
 
 Al explorar el codebase, leer `CONTEXT.md` (si existe) para obtener un modelo mental claro de los módulos relevantes, y revisar los ADRs del área que se está tocando.
 
+## Censurar secretos
+
+Este skill te hace mostrar comandos, salidas y artefactos capturados. **Censura primero cada secreto** — escribe `<REDACTED>` en su lugar. Construye los bucles contra variables de entorno, para que la credencial viva en el entorno y no en lo que muestras. Los artefactos capturados llevan cabeceras de autenticación: cita solo las líneas que llevan la señal.
+
+Si la salida censurada no alcanza para diagnosticar el bug, dilo y pregunta al usuario.
+
 ## Fase 1 — Construir un bucle de feedback
 
 **Esto es el skill.** Todo lo demás es mecánico. Si tienes una señal pass/fail **ajustada** para el bug — una que se ponga red con _este_ bug — encontrarás la causa; la bisección, la prueba de hipótesis y la instrumentación no hacen más que consumirla. Si no la tienes, ninguna cantidad de mirar código te salvará.
@@ -46,11 +52,11 @@ El objetivo no es una repro limpia sino una **tasa de reproducción más alta**.
 
 ### Cuando genuinamente no puedes construir un bucle
 
-Detente y dilo explícitamente. Lista lo que intentaste. Pide al usuario: (a) acceso al entorno que lo reproduce, (b) un artefacto capturado (archivo HAR, volcado de logs, core dump, grabación de pantalla con timestamps), o (c) permiso para añadir instrumentación temporal en producción. **No** procedas a hipotetizar sin un bucle.
+Detente y dilo explícitamente. Lista lo que intentaste. Pide al usuario: (a) acceso al entorno que lo reproduce, (b) un artefacto capturado y censurado (archivo HAR, volcado de logs, core dump, grabación de pantalla con timestamps), o (c) permiso para añadir instrumentación temporal en producción. **No** procedas a hipotetizar sin un bucle.
 
 ### Criterio de completitud — un bucle ajustado que se pone red
 
-La Fase 1 está lista cuando el bucle es **ajustado** y **capaz de ponerse red**: puedes nombrar **un comando** — la ruta de un script, la invocación de un test, un curl — que ya has **ejecutado al menos una vez** (pega la invocación y su salida), y que es:
+La Fase 1 está lista cuando el bucle es **ajustado** y **capaz de ponerse red**: puedes nombrar **un comando** — la ruta de un script, la invocación de un test, un curl — que ya has **ejecutado al menos una vez** (muestra la invocación y su salida, censuradas), y que es:
 
 - [ ] **Capaz de ponerse red** — recorre el code path real del bug y aserta el **síntoma exacto del usuario**, de modo que puede ponerse red con este bug y green una vez arreglado. No "corre sin error" — debe poder _atrapar este bug específico_.
 - [ ] **Determinista** — mismo veredicto en cada ejecución (bugs flaky: una tasa de reproducción alta y fijada, según lo anterior).

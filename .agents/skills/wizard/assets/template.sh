@@ -19,12 +19,10 @@ else
   BOLD=""; DIM=""; RESET=""; BLUE=""; GREEN=""; YELLOW=""; RED=""
 fi
 
-# El autor fija estos dos al principio de la sección de etapas.
+# El autor fija esto al principio de la sección de etapas.
 TOTAL_STAGES=0
-TOTAL_MINUTES=0
 
 _STAGE_INDEX=0
-_MINUTES_ELAPSED=0
 ENV_FILE="${ENV_FILE:-.env}"
 WRITTEN_ENV=()    # KEYs escritas en ENV_FILE en esta ejecución
 WRITTEN_SECRET=() # NAMEs de secrets configurados en esta ejecución
@@ -37,28 +35,24 @@ _clear() {
   if command -v tput >/dev/null 2>&1; then tput clear; else printf '\033[2J\033[3J\033[H'; fi
 }
 
-# banner "Título" — marco de apertura: qué hace este wizard y cuánto tarda.
+# banner "Título" — marco de apertura: qué hace este wizard.
 banner() {
   _clear
   printf '\n%s%s  %s%s\n' "$BOLD" "$BLUE" "$1" "$RESET"
-  printf '%s  %s etapas · unos %s minutos%s\n\n' \
-    "$DIM" "$TOTAL_STAGES" "$TOTAL_MINUTES" "$RESET"
+  printf '%s  %s etapas%s\n\n' "$DIM" "$TOTAL_STAGES" "$RESET"
   printf '%s  Tú manejas el navegador; este wizard te dice exactamente qué hacer y\n' "$DIM"
   printf '  captura los valores que copies de vuelta. Para en cualquier momento con Ctrl-C\n'
   printf '  y vuelve a ejecutarlo después — recuerda los valores ya guardados.%s\n' "$RESET"
   pause "¿Listo para empezar?"
 }
 
-# stage "Nombre" <minutos> — limpia la pantalla, anuncia una etapa y muestra
-# progreso + tiempo restante. Limpiar mantiene solo el paso actual en pantalla.
+# stage "Nombre" — limpia la pantalla, anuncia una etapa y muestra el progreso.
+# Limpiar mantiene solo el paso actual en pantalla.
 stage() {
   _clear
   _STAGE_INDEX=$((_STAGE_INDEX + 1))
-  local remaining=$((TOTAL_MINUTES - _MINUTES_ELAPSED))
-  (( remaining < 0 )) && remaining=0
-  _MINUTES_ELAPSED=$((_MINUTES_ELAPSED + ${2:-0}))
-  printf '\n%s%s▸ Etapa %s/%s · %s%s  %s(~%s min restantes)%s\n' \
-    "$BOLD" "$BLUE" "$_STAGE_INDEX" "$TOTAL_STAGES" "$1" "$RESET" "$DIM" "$remaining" "$RESET"
+  printf '\n%s%s▸ Etapa %s/%s · %s%s\n' \
+    "$BOLD" "$BLUE" "$_STAGE_INDEX" "$TOTAL_STAGES" "$1" "$RESET"
 }
 
 # say "..." — una línea de instrucción simple.
@@ -194,16 +188,15 @@ finish() {
 
 # ──────────────────────────────────────────────────────────────────────────
 # STAGES — redactar esta sección. Un stage() por paso que da el humano.
-# Reemplazar el ejemplo de abajo. Fijar los dos totales según las etapas escritas.
+# Reemplazar el ejemplo de abajo. Fijar TOTAL_STAGES según las etapas escritas.
 # ──────────────────────────────────────────────────────────────────────────
 
 TOTAL_STAGES=1
-TOTAL_MINUTES=5
 
 banner "Configuración de Stripe"
 
 # ── Etapa de ejemplo: reemplazar con tus pasos reales ─────────────────────
-stage "Stripe — API keys" 5
+stage "Stripe — API keys"
 say "Vamos a tomar tus claves de test de Stripe y guardarlas para dev local + CI."
 open_url "https://dashboard.stripe.com/test/apikeys"
 step "En la página de API keys, copia la Publishable key (empieza por pk_test_)."

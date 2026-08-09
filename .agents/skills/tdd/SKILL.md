@@ -23,6 +23,8 @@ Un **seam** es el límite público en el que testeas: la interface donde observa
 
 Preguntar: "¿Cuál es la interface pública, y qué seams deberíamos testear?"
 
+Cuando la forma de esa interface esté en discusión — cuán profundo es el módulo, dónde va el seam, qué debería exponer la interface — usar el skill `codebase-design` para el vocabulario. Es la fuente compartida de los términos módulo, interface, profundidad, seam, adapter, leverage y localidad, y es una referencia a consultar, no una sesión a ejecutar.
+
 ## Anti-patrones
 
 - **Acoplado a la implementación** — mockea colaboradores internos, testea métodos privados, o verifica por un canal lateral (consultar la base de datos en vez de usar la interface). La señal: el test se rompe al refactorizar aunque el comportamiento no haya cambiado.

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Espera, ¿qué?"
+  short_description: "Vuelve a explicarlo, más simple y con contexto"
+  default_prompt: "Usa $wait-what para volver a explicarme lo que acabas de decir."
+
+policy:
+  allow_implicit_invocation: false

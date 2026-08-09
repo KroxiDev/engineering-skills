@@ -1,6 +1,6 @@
 # Engineering Skills
 
-Colección de **31 skills** de ingeniería en español neutro, que funcionan tanto en [OpenAI Codex](https://developers.openai.com/codex/) como en [Claude Code](https://code.claude.com/docs).
+Colección de **30 skills** de ingeniería en español neutro, que funcionan tanto en [OpenAI Codex](https://developers.openai.com/codex/) como en [Claude Code](https://code.claude.com/docs).
 
 Cubre el ciclo completo: diseño de codebase, modelado de dominio, TDD, revisión de código, diagnóstico de bugs, planificación de trabajo grande, triage, traspasos entre sesiones y construcción de skills.
 
@@ -72,7 +72,7 @@ Los marcados `auto` se activan solos cuando la descripción encaja con la tarea.
 | `domain-modeling`               | auto       | Construye y afila el modelo de dominio: glosario, contexto y ADRs.                    |
 | `git-guardrails-claude-code`    | ver nota   | Instala hooks `PreToolUse` de Claude Code que bloquean git peligroso.                 |
 | `git-guardrails-codex`          | auto       | Protege Git en sesiones de Codex vía política en `AGENTS.md` y un verificador manual. |
-| `grill-me`                      | usuario    | Entrevista rigurosa, una pregunta por vez, para afilar un plan o diseño.              |
+| `grill-me`                      | usuario    | Entrevista rigurosa por rondas para afilar un plan o diseño.                          |
 | `grill-with-docs`               | usuario    | Como `grill-me`, creando ADRs y glosario sobre la marcha.                             |
 | `grilling`                      | auto       | Interroga un plan, decisión o idea hasta el entendimiento compartido.                 |
 | `implement`                     | usuario    | Implementa una spec o un set de tickets con TDD y revisión.                           |
@@ -80,8 +80,6 @@ Los marcados `auto` se activan solos cuando la descripción encaja con la tarea.
 | `loop-me`                       | usuario    | Entrevista sobre las specs de los workflows recurrentes que quieres construir.        |
 | `migrate-to-shoehorn`           | auto       | Migra tests de type assertions `as` a `@total-typescript/shoehorn`.                   |
 | `prototype`                     | auto       | Construye un prototipo descartable para responder una pregunta de diseño.             |
-| `qa`                            | usuario    | Sesión conversacional de QA que publica los bugs como issues.                         |
-| `request-refactor-plan`         | usuario    | Plan de refactor en commits diminutos, publicado como issue.                          |
 | `research`                      | auto       | Investiga contra fuentes primarias y captura los hallazgos como Markdown.             |
 | `resolving-merge-conflicts`     | auto       | Resuelve un conflicto de merge o rebase en progreso.                                  |
 | `setup-pre-commit`              | auto       | Configura Husky con lint-staged, typecheck y tests.                                   |
@@ -91,9 +89,10 @@ Los marcados `auto` se activan solos cuando la descripción encaja con la tarea.
 | `to-spec`                       | usuario    | Convierte la conversación en una spec y la publica en el issue tracker.               |
 | `to-tickets`                    | usuario    | Divide un plan en tickets tracer-bullet con sus aristas de bloqueo.                   |
 | `triage`                        | usuario    | Mueve issues y PRs externas por una máquina de estados de triage.                     |
+| `wait-what`                     | usuario    | Vuelve a explicar el último mensaje, más simple y con el contexto que falta.          |
 | `wayfinder`                     | usuario    | Planifica trabajo mayor que una sesión como un mapa de tickets de decisión.           |
-| `wizard`                        | usuario    | Genera un wizard Bash interactivo para procedimientos manuales.                       |
-| `writing-great-skills`          | usuario    | Referencia para escribir y editar skills predecibles.                                 |
+| `wizard`                        | auto       | Genera un wizard Bash interactivo para procedimientos manuales.                       |
+| `writing-for-agents`            | auto       | Referencia para escribir cualquier documento que consuma un agente.                   |
 
 ### Los dos skills de guardrails
 
@@ -104,7 +103,7 @@ Los marcados `auto` se activan solos cuando la descripción encaja con la tarea.
 
 ### Nota de procedencia
 
-La mayoría de los skills adaptan [mattpocock/skills](https://github.com/mattpocock/skills) al español neutro. `qa` y `request-refactor-plan` están deprecados en el repositorio original, pero se conservan completos porque siguen siendo útiles. Gracias a **Matt Pocock** por el original.
+La mayoría de los skills adaptan [mattpocock/skills](https://github.com/mattpocock/skills) al español neutro. Gracias a **Matt Pocock** por el original.
 
 `caveman` es una adaptación del skill [caveman](https://github.com/JuliusBrussee/caveman) de **Julius Brussee** (MIT). Se mantienen el nombre y los nombres de los niveles, se restringe la invocación al usuario, y se retiran los tres modos `wenyan` (compresión en chino clásico), que no aportan nada a un set en español.
 

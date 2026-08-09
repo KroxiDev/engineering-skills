@@ -11,6 +11,9 @@
 #   capture VAR "<pregunta>"      → mostrar la pregunta y guardar la respuesta
 #
 # Al final, imprimir los valores como KEY=VALUE para que el agente los procese.
+#
+# `capture` devuelve su valor a la terminal, donde el agente lo lee — así que
+# capturar observaciones, y dejar el inicio de sesión al usuario como un `step`.
 
 set -euo pipefail
 

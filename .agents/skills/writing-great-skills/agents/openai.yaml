@@ -1,7 +1,0 @@
-interface:
-  display_name: "Escribir buenos skills"
-  short_description: "Diseña skills concisos y predecibles"
-  default_prompt: "Usa $writing-great-skills para revisar este skill."
-
-policy:
-  allow_implicit_invocation: false

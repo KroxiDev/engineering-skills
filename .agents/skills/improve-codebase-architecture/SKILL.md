@@ -16,14 +16,14 @@ Este comando está _informado_ por el modelo de dominio del proyecto y construid
 
 ### 1. Explorar
 
-**Delimitar antes de escanear — YAGNI.** Profundizar un módulo compensa porque facilita sus cambios futuros, así que dar peso extra a las partes del codebase que han cambiado recientemente. Decidir *dónde* mirar antes de mirar:
+**Delimitar antes de escanear — YAGNI.** Profundizar un módulo compensa porque facilita sus cambios futuros, así que dar peso extra a las partes del codebase que han cambiado recientemente. Decidir _dónde_ mirar antes de mirar:
 
 - Si el usuario nombró una dirección — un módulo, un subsistema, un punto de dolor — tomarla, y saltarse la inferencia de abajo.
 - Si no, recorrer un buen tramo del historial de commits (`git log --oneline`) para encontrar los hot spots del codebase — los archivos y áreas que salen una y otra vez — y dejar que esas rutas atraigan la atención primero. Si los cambios están dispersos sin hot spot claro, ampliar la red.
 
 Leer primero el glosario de dominio del proyecto (`CONTEXT.md`) y cualquier ADR del área que se va a tocar.
 
-Después lanzar un subagente de exploración de solo lectura para recorrer el codebase. No seguir heurísticas rígidas — explorar orgánicamente y anotar dónde se experimenta fricción:
+Después lanzar un subagente para recorrer el codebase. No seguir heurísticas rígidas — explorar orgánicamente y anotar dónde se experimenta fricción:
 
 - ¿Dónde entender un concepto exige rebotar entre muchos módulos pequeños?
 - ¿Dónde hay módulos **superficiales** — interface casi tan compleja como la implementación?

@@ -1,7 +1,0 @@
-interface:
-  display_name: "Planificar un refactor"
-  short_description: "Diseña un refactor incremental seguro"
-  default_prompt: "Usa $request-refactor-plan para preparar un plan de refactor seguro."
-
-policy:
-  allow_implicit_invocation: false

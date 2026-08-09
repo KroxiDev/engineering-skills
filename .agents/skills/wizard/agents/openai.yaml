@@ -2,6 +2,3 @@ interface:
   display_name: "Crear un wizard"
   short_description: "Automatiza procedimientos humanos en Bash"
   default_prompt: "Usa $wizard para crear un wizard seguro para este procedimiento."
-
-policy:
-  allow_implicit_invocation: false
