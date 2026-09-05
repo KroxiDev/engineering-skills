@@ -1,6 +1,6 @@
 # Engineering Skills
 
-Colección de **30 skills** de ingeniería en español neutro, que funcionan tanto en [OpenAI Codex](https://developers.openai.com/codex/) como en [Claude Code](https://code.claude.com/docs).
+Colección de **32 skills** de ingeniería en español neutro, que funcionan tanto en [OpenAI Codex](https://developers.openai.com/codex/) como en [Claude Code](https://code.claude.com/docs).
 
 Cubre el ciclo completo: diseño de codebase, modelado de dominio, TDD, revisión de código, diagnóstico de bugs, planificación de trabajo grande, triage, traspasos entre sesiones y construcción de skills.
 
@@ -81,6 +81,7 @@ Los marcados `auto` se activan solos cuando la descripción encaja con la tarea.
 | `migrate-to-shoehorn`           | auto       | Migra tests de type assertions `as` a `@total-typescript/shoehorn`.                   |
 | `prototype`                     | auto       | Construye un prototipo descartable para responder una pregunta de diseño.             |
 | `research`                      | auto       | Investiga contra fuentes primarias y captura los hallazgos como Markdown.             |
+| `request-refactor-plan`         | usuario    | Planifica un refactor en commits pequeños y publica el plan como issue.               |
 | `resolving-merge-conflicts`     | auto       | Resuelve un conflicto de merge o rebase en progreso.                                  |
 | `setup-pre-commit`              | auto       | Configura Husky con lint-staged, typecheck y tests.                                   |
 | `setup-ts-deep-modules`         | usuario    | Conecta dependency-cruiser para ocultar internals detrás de entry points.             |
@@ -92,6 +93,7 @@ Los marcados `auto` se activan solos cuando la descripción encaja con la tarea.
 | `wait-what`                     | usuario    | Vuelve a explicar el último mensaje, más simple y con el contexto que falta.          |
 | `wayfinder`                     | usuario    | Planifica trabajo mayor que una sesión como un mapa de tickets de decisión.           |
 | `wizard`                        | auto       | Genera un wizard Bash interactivo para procedimientos manuales.                       |
+| `writing-great-skills`          | usuario    | Referencia para escribir y editar skills concisos y predecibles.                      |
 | `writing-for-agents`            | auto       | Referencia para escribir cualquier documento que consuma un agente.                   |
 
 ### Los dos skills de guardrails
