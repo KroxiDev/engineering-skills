@@ -23,7 +23,7 @@ Buscar oportunidades de prefactorizar el código para facilitar la implementaci�
 
 ### 3. Redactar los slices verticales
 
-Dividir el trabajo en tickets de **bala trazadora**.
+Dividir el trabajo ejecutable por un agente en tickets de **bala trazadora**.
 
 <vertical-slice-rules>
 
@@ -38,11 +38,18 @@ Dar a cada ticket sus **aristas de bloqueo** — los otros tickets que deben com
 
 **Los refactors amplios son la excepción al slicing vertical.** Un **refactor amplio** es un cambio mecánico — renombrar una columna, retipar un símbolo compartido — cuyo **radio de explosión** se abre en abanico por todo el codebase, de modo que una sola edición rompe miles de call sites a la vez y ningún slice vertical puede aterrizar en green. No forzarlo dentro de una bala trazadora; secuenciarlo como **expand–contract**. Primero expandir: añadir la forma nueva junto a la vieja para que nada se rompa. Luego migrar los call sites por lotes dimensionados por radio de explosión (por package, por directorio), cada lote su propio ticket bloqueado por el expand, manteniendo el CI en green de lote a lote porque la forma vieja sigue existiendo. Finalmente contraer: borrar la forma vieja cuando no quede ningún caller, en un ticket bloqueado por todos los lotes de migración. Cuando ni siquiera los lotes puedan mantenerse en green por sí solos, conservar la secuencia pero dejar que compartan una branch de integración que bloquee a un ticket final de integrar-y-verificar — el green se promete solo ahí.
 
+#### Clasificación y formato
+
+Priorizar `ready-for-agent` siempre que el agente pueda completar y validar la tarea. Reservar `Manual` para intervenciones imprescindibles del usuario o pruebas extensas cuya ejecución por el usuario sea necesaria, indicando brevemente el motivo. Las etiquetas `Manual` y `ready-for-agent` son excluyentes.
+
+Redactar los tickets `Manual` con un objetivo breve, sus bloqueadores y pocos pasos numerados y detallados. Incluir preferentemente un comando listo para copiar y pegar, con el directorio y los requisitos indispensables para ejecutarlo. Indicar el resultado esperado para cerrar la tarea y, solo cuando sea necesario para el cierre, qué resultados debe reportar el usuario después de ejecutarla.
+
 ### 4. Interrogar al usuario
 
 Presentar la división propuesta como lista numerada. Para cada ticket, mostrar:
 
 - **Título**: nombre corto y descriptivo
+- **Etiqueta**: `Manual` o `ready-for-agent`, según la clasificación anterior
 - **Bloqueado por**: qué otros tickets (si los hay) deben completarse primero
 - **Qué entrega**: el comportamiento end-to-end que este ticket hace funcionar
 
@@ -56,14 +63,16 @@ Iterar hasta que el usuario apruebe la división.
 
 ### 5. Publicar los tickets en el tracker configurado
 
-Publicar los tickets aprobados. **Cómo** depende del tracker configurado — los tickets son los mismos en ambos casos, solo cambia la forma de las aristas de bloqueo:
+Publicar los tickets aprobados con la etiqueta definida en el paso 3. **Cómo** depende del tracker configurado — los tickets son los mismos en ambos casos, solo cambia la forma de las aristas de bloqueo:
 
-- **Archivos locales** → escribir un archivo por ticket bajo `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numerados desde `01` en orden de dependencia (bloqueadores primero). El "Bloqueado por" de cada archivo lista los números/títulos de los que depende. Usar la plantilla de archivo por ticket de abajo — un ticket por archivo, nunca un único archivo combinado.
-- **Un issue tracker real (GitHub, Linear, …)** → publicar un issue por ticket en orden de dependencia (bloqueadores primero) para que las aristas de bloqueo de cada ticket puedan referenciar identificadores reales. Usar la relación nativa de bloqueo / sub-issue de la plataforma donde exista; si no, poner en el "Bloqueado por" de cada ticket los issues que lo bloquean. Aplicar la etiqueta de triage `ready-for-agent` salvo instrucción en contra — los tickets son agarrables por un agente por construcción.
+- **Archivos locales** → escribir un archivo por ticket bajo `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numerados desde `01` en orden de dependencia (bloqueadores primero). El "Bloqueado por" de cada archivo lista los números/títulos de los que depende. Usar el formato correspondiente definido abajo — un ticket por archivo, nunca un único archivo combinado.
+- **Un issue tracker real (GitHub, Linear, …)** → publicar un issue por ticket en orden de dependencia (bloqueadores primero) para que las aristas de bloqueo de cada ticket puedan referenciar identificadores reales. Usar la relación nativa de bloqueo / sub-issue de la plataforma donde exista; si no, poner en el "Bloqueado por" de cada ticket los issues que lo bloquean.
 
 Trabajar el **frontier**: cualquier ticket cuyos bloqueadores estén todos terminados. Para una cadena puramente lineal eso significa de arriba a abajo.
 
 NO cerrar ni modificar ningún issue padre.
+
+Para los tickets `Manual`, usar el formato breve del paso 3, conservar la referencia al padre si corresponde y los bloqueadores, y escribir **Estado: Manual** en los archivos locales. Para los tickets ejecutables por un agente, usar las siguientes plantillas.
 
 <local-ticket-template>
 
@@ -101,6 +110,6 @@ El comportamiento end-to-end que este ticket hace funcionar, desde la perspectiv
 
 </issue-template>
 
-En cualquiera de las dos formas, evitar rutas de archivos específicas o snippets de código — se quedan obsoletos rápido. Excepción: si un prototipo produjo un snippet que codifica una decisión con más precisión que la prosa (máquina de estados, reducer, schema, forma de un tipo), inlinearlo y anotar brevemente que vino de un prototipo. Recortar a las partes ricas en decisión — no una demo funcional, solo lo importante.
+En los tickets ejecutables por un agente, evitar rutas de archivos específicas o snippets de código — se quedan obsoletos rápido. Excepción: si un prototipo produjo un snippet que codifica una decisión con más precisión que la prosa (máquina de estados, reducer, schema, forma de un tipo), inlinearlo y anotar brevemente que vino de un prototipo. Recortar a las partes ricas en decisión — no una demo funcional, solo lo importante.
 
-Trabajar el frontier un ticket por vez con `implement`, limpiando el contexto entre tickets.
+Trabajar los tickets `ready-for-agent` del frontier un ticket por vez con `implement`, limpiando el contexto entre tickets. Los tickets `Manual` los ejecuta el usuario.
