@@ -1,0 +1,7 @@
+interface:
+  display_name: "Revisión con GPT"
+  short_description: "Revisión independiente con GPT-6 Astra Max"
+  default_prompt: "Usa $gpt-review para revisar estos cambios con GPT-6 Astra Max."
+
+policy:
+  allow_implicit_invocation: false

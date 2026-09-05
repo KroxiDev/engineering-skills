@@ -9,7 +9,7 @@
     {
       "name": "engineering-skills",
       "source": "./",
-      "description": "Colección de 30 skills de ingeniería en español neutro para Claude Code y Codex: diseño de codebase, TDD, revisión de código, diagnóstico de bugs, planificación, triage, traspasos y construcción de skills.",
+      "description": "Colección de 33 skills de ingeniería en español neutro para Claude Code y Codex: diseño de codebase, TDD, revisión de código, diagnóstico de bugs, planificación, triage, traspasos y construcción de skills.",
       "category": "development",
       "tags": [
         "skills",

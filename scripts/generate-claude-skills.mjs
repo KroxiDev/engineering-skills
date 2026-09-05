@@ -21,6 +21,7 @@ const CLAUDE_OVERRIDES = {
     argumentHint: "¿En qué debería centrarse la próxima sesión?",
     disableModelInvocation: true,
   },
+  "gpt-review": { name: "claude-review", disableModelInvocation: true },
   "grill-me": { disableModelInvocation: true },
   "grill-with-docs": { disableModelInvocation: true },
   implement: { disableModelInvocation: true },
@@ -48,20 +49,44 @@ const canonicalRoot = join(repositoryRoot, ".agents", "skills");
 const claudeRoot = join(repositoryRoot, "skills");
 const checkOnly = process.argv.includes("--check");
 
-function canonicalFrontmatter(skillName) {
+function canonicalSkill(skillName) {
   const path = join(canonicalRoot, skillName, "SKILL.md");
   const skill = readFileSync(path, "utf8");
-  const frontmatter = skill.match(/^---\n([\s\S]*?)\n---(?:\n|$)/u)?.[1];
-  if (!frontmatter) throw new Error(`${path}: frontmatter inválido`);
-  return frontmatter;
+  const match = skill.match(/^---\n([\s\S]*?)\n---(?:\n|$)/u);
+  if (!match) throw new Error(`${path}: frontmatter inválido`);
+  return { frontmatter: match[1], body: skill.slice(match[0].length) };
 }
 
 function quoteYaml(value) {
   return JSON.stringify(value);
 }
 
+function claudeReview(metadata, body) {
+  const codexSettings =
+    'En Codex, con `collaboration.spawn_agent`, configura `model: "gpt-6-astra"`, `reasoning_effort: "max"` y `fork_turns: "none"`.';
+  if (!body.includes(codexSettings)) {
+    throw new Error(
+      "gpt-review: cambió la configuración del revisor; actualiza la adaptación de Claude antes de generar."
+    );
+  }
+  const claudeSettings =
+    'En Claude Code, configura el revisor con `model: "claude-opus-5"` y `effort: "max"` (por CLI, `--model claude-opus-5 --effort max`) y verifica la selección efectiva.';
+  return [
+    "---",
+    metadata
+      .replace(/^name: gpt-review$/mu, "name: claude-review")
+      .replaceAll("GPT-6 Astra Max", "Opus 5 Max"),
+    "---",
+    body
+      .replace("# Revisión con GPT", "# Revisión con Claude")
+      .replaceAll("GPT-6 Astra Max", "Opus 5 Max")
+      .replace(codexSettings, claudeSettings),
+  ].join("\n");
+}
+
 function wrapper(skillName) {
   const override = CLAUDE_OVERRIDES[skillName] ?? {};
+  const { frontmatter, body } = canonicalSkill(skillName);
   const extraFrontmatter = [];
   if (override.argumentHint) {
     extraFrontmatter.push(`argument-hint: ${quoteYaml(override.argumentHint)}`);
@@ -70,9 +95,8 @@ function wrapper(skillName) {
     extraFrontmatter.push("disable-model-invocation: true");
   }
 
-  const metadata = [canonicalFrontmatter(skillName), ...extraFrontmatter].join(
-    "\n"
-  );
+  const metadata = [frontmatter, ...extraFrontmatter].join("\n");
+  if (skillName === "gpt-review") return claudeReview(metadata, body);
   return [
     "---",
     metadata,
@@ -89,7 +113,12 @@ const skillNames = readdirSync(canonicalRoot, { withFileTypes: true })
   .filter((entry) => entry.isDirectory())
   .map((entry) => entry.name)
   .sort();
-const expected = new Map(skillNames.map((name) => [name, wrapper(name)]));
+const expected = new Map(
+  skillNames.map((name) => [
+    CLAUDE_OVERRIDES[name]?.name ?? name,
+    wrapper(name),
+  ])
+);
 
 if (checkOnly) {
   const errors = [];
@@ -100,11 +129,11 @@ if (checkOnly) {
         .sort()
     : [];
 
-  for (const name of skillNames) {
+  for (const [name, contents] of expected) {
     const path = join(claudeRoot, name, "SKILL.md");
     if (!existsSync(path)) {
       errors.push(`skills/${name}/SKILL.md: wrapper ausente`);
-    } else if (readFileSync(path, "utf8") !== expected.get(name)) {
+    } else if (readFileSync(path, "utf8") !== contents) {
       errors.push(`skills/${name}/SKILL.md: wrapper desactualizado`);
     }
   }

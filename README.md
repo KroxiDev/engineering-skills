@@ -1,10 +1,10 @@
 # Engineering Skills
 
-Colección de **32 skills** de ingeniería en español neutro, que funcionan tanto en [OpenAI Codex](https://developers.openai.com/codex/) como en [Claude Code](https://code.claude.com/docs).
+Colección de **33 skills por plataforma** de ingeniería en español neutro para [OpenAI Codex](https://developers.openai.com/codex/) y [Claude Code](https://code.claude.com/docs). La revisión independiente se llama `gpt-review` en Codex y `claude-review` en Claude Code.
 
 Cubre el ciclo completo: diseño de codebase, modelado de dominio, TDD, revisión de código, diagnóstico de bugs, planificación de trabajo grande, triage, traspasos entre sesiones y construcción de skills.
 
-`.agents/skills` es la fuente canónica para Codex. Cada skill añade `agents/openai.yaml` con sus metadatos de invocación; Claude Code consume wrappers mínimos generados en `skills/`, que conservan sus campos específicos sin contaminar el frontmatter que valida Codex.
+`.agents/skills` es la fuente canónica para Codex. Cada skill añade `agents/openai.yaml` con sus metadatos de invocación; Claude Code consume wrappers mínimos generados en `skills/`, que conservan sus campos específicos sin contaminar el frontmatter que valida Codex. `claude-review` se genera como una adaptación completa y autocontenida del mismo flujo de revisión, con Opus 5 Max.
 
 ## Instalación
 
@@ -72,6 +72,7 @@ Los marcados `auto` se activan solos cuando la descripción encaja con la tarea.
 | `domain-modeling`               | auto       | Construye y afila el modelo de dominio: glosario, contexto y ADRs.                    |
 | `git-guardrails-claude-code`    | ver nota   | Instala hooks `PreToolUse` de Claude Code que bloquean git peligroso.                 |
 | `git-guardrails-codex`          | auto       | Protege Git en sesiones de Codex vía política en `AGENTS.md` y un verificador manual. |
+| `gpt-review` / `claude-review`  | usuario    | Revisión independiente: GPT-6 Astra Max en Codex; Opus 5 Max en Claude Code.          |
 | `grill-me`                      | usuario    | Entrevista rigurosa por rondas para afilar un plan o diseño.                          |
 | `grill-with-docs`               | usuario    | Como `grill-me`, creando ADRs y glosario sobre la marcha.                             |
 | `grilling`                      | auto       | Interroga un plan, decisión o idea hasta el entendimiento compartido.                 |
@@ -109,6 +110,8 @@ La mayoría de los skills adaptan [mattpocock/skills](https://github.com/mattpoc
 
 `caveman` es una adaptación del skill [caveman](https://github.com/JuliusBrussee/caveman) de **Julius Brussee** (MIT). Se mantienen el nombre y los nombres de los niveles, se restringe la invocación al usuario, y se retiran los tres modos `wenyan` (compresión en chino clásico), que no aportan nada a un set en español.
 
+`gpt-review` y su variante `claude-review` adaptan el [skill original](https://github.com/davidondrej/skills/blob/main/skills/agent-orchestration/gpt-review/SKILL.md) de **David Ondrej** al español, con invocación explícita y sin dependencias de otros skills. Usan GPT-6 Astra Max en Codex y Opus 5 Max en Claude Code; requieren una herramienta que pueda lanzar el modelo correspondiente con esfuerzo máximo. Conservan su [licencia MIT](.agents/skills/gpt-review/LICENSE).
+
 ## Estructura
 
 ```text
@@ -120,7 +123,7 @@ engineering-skills/
 │   ├── scripts/             # scripts ejecutables
 │   └── assets/              # plantillas y configuración
 ├── skills/<nombre>/
-│   └── SKILL.md             # wrapper generado para Claude Code
+│   └── SKILL.md             # wrapper o variante completa para Claude Code
 ├── .claude-plugin/
 │   ├── plugin.json          # manifiesto del plugin
 │   └── marketplace.json     # catálogo, para instalar por marketplace
@@ -131,7 +134,7 @@ engineering-skills/
 
 Cada skill requiere `SKILL.md` y `agents/openai.yaml`. Los demás directorios son opcionales y solo aparecen cuando el workflow los necesita.
 
-`.agents/skills/` contiene toda la lógica y los recursos. Los wrappers de `skills/` solo añaden el frontmatter exclusivo de Claude Code y le indican que cargue el skill canónico mediante `${CLAUDE_PLUGIN_ROOT}`. `npm run validate:skills` falla si esos wrappers no están sincronizados.
+`.agents/skills/` contiene la lógica y los recursos compartidos. Los wrappers de `skills/` añaden el frontmatter exclusivo de Claude Code y cargan el skill canónico mediante `${CLAUDE_PLUGIN_ROOT}`. La excepción es `skills/claude-review/SKILL.md`: el generador conserva el flujo completo de `gpt-review` y adapta nombre, modelo y configuración del revisor. Edita la fuente canónica o esa adaptación en el generador; `npm run validate:skills` comprueba la sincronización de ambos tipos de salida.
 
 ## Desarrollo
 
