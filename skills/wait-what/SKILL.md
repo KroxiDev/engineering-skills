@@ -1,6 +1,6 @@
 ---
 name: wait-what
-description: Para. Ese último mensaje no llegó — vuelve a explicarlo.
+description: Detente. Ese último mensaje no fue claro — vuelve a explicarlo.
 disable-model-invocation: true
 ---
 
