@@ -21,6 +21,7 @@ const CLAUDE_OVERRIDES = {
     argumentHint: "¿En qué debería centrarse la próxima sesión?",
     disableModelInvocation: true,
   },
+  "git-worktree": { disableModelInvocation: true },
   "gpt-review": { name: "claude-review", disableModelInvocation: true },
   "grill-me": { disableModelInvocation: true },
   "grill-with-docs": { disableModelInvocation: true },

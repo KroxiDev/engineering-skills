@@ -1,6 +1,6 @@
 # Engineering Skills
 
-Colección de **33 skills por plataforma** de ingeniería en español neutro para [OpenAI Codex](https://developers.openai.com/codex/) y [Claude Code](https://code.claude.com/docs). La revisión independiente se llama `gpt-review` en Codex y `claude-review` en Claude Code.
+Colección de **34 skills por plataforma** de ingeniería en español neutro para [OpenAI Codex](https://developers.openai.com/codex/) y [Claude Code](https://code.claude.com/docs). La revisión independiente se llama `gpt-review` en Codex y `claude-review` en Claude Code.
 
 Cubre el ciclo completo: diseño de codebase, modelado de dominio, TDD, revisión de código, diagnóstico de bugs, planificación de trabajo grande, triage, traspasos entre sesiones y construcción de skills.
 
@@ -72,6 +72,7 @@ Los marcados `auto` se activan solos cuando la descripción encaja con la tarea.
 | `domain-modeling`               | auto       | Construye y afila el modelo de dominio: glosario, contexto y ADRs.                    |
 | `git-guardrails-claude-code`    | ver nota   | Instala hooks `PreToolUse` de Claude Code que bloquean git peligroso.                 |
 | `git-guardrails-codex`          | auto       | Protege Git en sesiones de Codex vía política en `AGENTS.md` y un verificador manual. |
+| `git-worktree`                 | usuario    | Prepara worktrees exclusivos para implementar tareas simultáneas del mismo proyecto. |
 | `gpt-review` / `claude-review`  | usuario    | Revisión independiente: GPT-6 Astra Max en Codex; Opus 5 Max en Claude Code.          |
 | `grill-me`                      | usuario    | Entrevista rigurosa por rondas para afilar un plan o diseño.                          |
 | `grill-with-docs`               | usuario    | Como `grill-me`, creando ADRs y glosario sobre la marcha.                             |
@@ -110,7 +111,9 @@ La mayoría de los skills adaptan [mattpocock/skills](https://github.com/mattpoc
 
 `caveman` es una adaptación del skill [caveman](https://github.com/JuliusBrussee/caveman) de **Julius Brussee** (MIT). Se mantienen el nombre y los nombres de los niveles, se restringe la invocación al usuario, y se retiran los tres modos `wenyan` (compresión en chino clásico), que no aportan nada a un set en español.
 
-`gpt-review` y su variante `claude-review` adaptan el [skill original](https://github.com/davidondrej/skills/blob/main/skills/agent-orchestration/gpt-review/SKILL.md) de **David Ondrej** al español, con invocación explícita y sin dependencias de otros skills. Usan GPT-6 Astra Max en Codex y Opus 5 Max en Claude Code; requieren una herramienta que pueda lanzar el modelo correspondiente con esfuerzo máximo. Conservan su [licencia MIT](.agents/skills/gpt-review/LICENSE).
+`gpt-review` y su variante `claude-review` adaptan el [skill original](https://github.com/davidondrej/skills/blob/main/skills/agent-orchestration/gpt-review/SKILL.md) de **David Ondrej** al español, con invocación explícita y sin dependencias de otros skills. Usan GPT-6 Astra Max en Codex y Opus 5 Max en Claude Code; requieren una herramienta que pueda lanzar el modelo correspondiente con esfuerzo máximo.
+
+`git-worktree` adapta el [skill original](https://github.com/davidondrej/skills/blob/main/skills/agent-orchestration/git-worktree/SKILL.md) de **David Ondrej** para implementar tareas simultáneas en worktrees exclusivos. Se invoca explícitamente, prepara el entorno de cada tarea y mantiene las revisiones por separado.
 
 ## Estructura
 

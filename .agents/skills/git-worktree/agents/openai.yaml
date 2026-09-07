@@ -1,0 +1,7 @@
+interface:
+  display_name: "Implementación en worktrees"
+  short_description: "Aísla tareas simultáneas con Git worktrees"
+  default_prompt: "Usa $git-worktree para implementar esta tarea en un worktree exclusivo, conservando el trabajo de las otras sesiones."
+
+policy:
+  allow_implicit_invocation: false
