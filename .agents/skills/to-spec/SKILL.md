@@ -15,7 +15,7 @@ El issue tracker y el vocabulario de etiquetas de triage deberían estar ya conf
 
 Comprobar con el usuario que estos seams coinciden con sus expectativas.
 
-3. Escribir la spec usando la plantilla de abajo y publicarla en el issue tracker del proyecto. Aplicar la etiqueta de triage `ready-for-agent` — no hace falta triage adicional.
+3. Escribir la spec usando la plantilla de abajo y publicarla en el issue tracker del proyecto. Aplicar primero la etiqueta `spec` y luego la etiqueta de triage `ready-for-agent` — no hace falta triage adicional.
 
 <spec-template>
 
