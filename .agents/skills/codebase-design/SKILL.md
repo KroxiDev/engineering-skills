@@ -19,9 +19,9 @@ Usar estos términos exactamente — no sustituirlos por "componente", "servicio
 
 **Profundidad** — leverage en la interface: la cantidad de comportamiento que un caller (o test) puede ejercitar por unidad de interface que tiene que aprender. Un módulo es **profundo** cuando una gran cantidad de comportamiento se asienta tras una interface pequeña, **superficial** cuando la interface es casi tan compleja como la implementación.
 
-**Seam** _(Michael Feathers)_ — un lugar donde puedes alterar el comportamiento sin editar en ese lugar; la *ubicación* donde vive la interface de un módulo. Dónde poner el seam es una decisión de diseño propia, distinta de qué va detrás de él. _Evitar_: boundary (sobrecargado con el bounded context de DDD).
+**Seam** _(Michael Feathers)_ — un lugar donde puedes alterar el comportamiento sin editar en ese lugar; la _ubicación_ donde vive la interface de un módulo. Dónde poner el seam es una decisión de diseño propia, distinta de qué va detrás de él. _Evitar_: boundary (sobrecargado con el bounded context de DDD).
 
-**Adapter** — una cosa concreta que satisface una interface en un seam. Describe *rol* (qué hueco llena), no sustancia (qué hay dentro).
+**Adapter** — una cosa concreta que satisface una interface en un seam. Describe _rol_ (qué hueco llena), no sustancia (qué hay dentro).
 
 **Leverage** — lo que los callers obtienen de la profundidad: más capacidad por unidad de interface que aprenden. Una implementación se amortiza en N call sites y M tests.
 
@@ -61,7 +61,7 @@ Al diseñar una interface, preguntarse:
 
 - **La profundidad es una propiedad de la interface, no de la implementación.** Un módulo profundo puede estar compuesto internamente de partes pequeñas, mockeables e intercambiables — simplemente no forman parte de la interface. Un módulo puede tener **seams internos** (privados de su implementación, usados por sus propios tests) además del **seam externo** en su interface.
 - **El test de la eliminación.** Imagina eliminar el módulo. Si la complejidad desaparece, era un pass-through. Si la complejidad reaparece repartida entre N callers, se estaba ganando su lugar.
-- **La interface es la superficie de test.** Los callers y los tests cruzan el mismo seam. Si quieres testear *más allá* de la interface, el módulo probablemente tiene la forma equivocada.
+- **La interface es la superficie de test.** Los callers y los tests cruzan el mismo seam. Si quieres testear _más allá_ de la interface, el módulo probablemente tiene la forma equivocada.
 - **Un adapter significa un seam hipotético. Dos adapters significan uno real.** No introducir un seam a menos que algo realmente varíe a través de él.
 
 ## Diseñar para la testeabilidad

@@ -5,13 +5,13 @@ description: Una entrevista sin descanso que hace todas las preguntas del fronti
 
 Ejecutar una sesión de `grilling`, pero por **rondas** en vez de pregunta a pregunta. Todo lo que fija `grilling` sigue vigente: los hechos se buscan y las decisiones se preguntan, cada pregunta lleva adjunta tu respuesta recomendada, y no se actúa hasta que el usuario confirme el entendimiento compartido. Lo único que cambia es el ritmo.
 
-Mapear el trabajo como un **árbol de diseño**: cada decisión se ramifica en las decisiones que cuelgan de ella. El **frontier** es cada decisión cuyos prerrequisitos ya están resueltos — las preguntas que puedes hacer *ahora* sin adivinar respuestas que aún no has oído.
+Mapear el trabajo como un **árbol de diseño**: cada decisión se ramifica en las decisiones que cuelgan de ella. El **frontier** es cada decisión cuyos prerrequisitos ya están resueltos — las preguntas que puedes hacer _ahora_ sin adivinar respuestas que aún no has oído.
 
 ## La ronda
 
 Una ronda es todo el frontier de una vez. Numerar cada pregunta, adjuntarle su respuesta recomendada, y esperar al usuario antes de la siguiente.
 
-**Una ronda está lista para enviarse cuando** cada decisión desbloqueada del frontier está numerada y lleva su respuesta recomendada. Una pregunta cuya respuesta depende de otra aún abierta en esta ronda pertenece a una ronda *posterior*, no a esta.
+**Una ronda está lista para enviarse cuando** cada decisión desbloqueada del frontier está numerada y lleva su respuesta recomendada. Una pregunta cuya respuesta depende de otra aún abierta en esta ronda pertenece a una ronda _posterior_, no a esta.
 
 Cada ronda respondida remodela el árbol: las decisiones resueltas empujan el frontier hacia afuera y desbloquean las preguntas que dependían de ellas. Recalcular el frontier y enviar la siguiente ronda.
 

@@ -1,6 +1,6 @@
 ---
 name: resolving-merge-conflicts
-description: "Usar cuando haya que resolver un conflicto de merge/rebase de git en progreso."
+description: Usar cuando haya que resolver un conflicto de merge/rebase de git en progreso.
 ---
 
 1. **Ver el estado actual** del merge/rebase. Revisar el historial de git y los archivos en conflicto.

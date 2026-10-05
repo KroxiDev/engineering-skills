@@ -20,7 +20,7 @@ src/packages/
     tests/          ← tests co-ubicados + fixtures (una subcarpeta, así que privada).
 ```
 
-La superficie pública son los **archivos raíz** del package — no un `index.ts` designado. Por convención la implementación vive en `lib/` y los tests en `tests/`, dando a cada package la misma forma de dos carpetas. La regla en sí es general, eso sí: *cualquier cosa* en *cualquier* subcarpeta es privada, así que nunca hay que extender la configuración para añadir una carpeta.
+La superficie pública son los **archivos raíz** del package — no un `index.ts` designado. Por convención la implementación vive en `lib/` y los tests en `tests/`, dando a cada package la misma forma de dos carpetas. La regla en sí es general, eso sí: _cualquier cosa_ en _cualquier_ subcarpeta es privada, así que nunca hay que extender la configuración para añadir una carpeta.
 
 Cuatro reglas, todas `error`:
 
@@ -29,9 +29,9 @@ Cuatro reglas, todas `error`:
 3. **Tests a través de los entry points** — los archivos bajo `<pkg>/tests/` pueden importar los entry points de cualquier package y sus propios fixtures de `tests/`, pero nunca los internals de subcarpetas de ningún package (ni siquiera del propio). Los tests de integración entre packages están bien; los deep imports no.
 4. **Sin ciclos** — sin ciclos de dependencias.
 
-**Entry points, no un barrel.** Como la superficie pública es *cada* archivo raíz, un package puede exponer varios entry points pequeños (`index.ts`, `client.ts`, `server.ts`) en vez de canalizar todo por un `index.ts` gigante. Los barrel files que re-exportan un subárbol entero se desaconsejan — mantener los entry points pequeños y esconder la implementación en subcarpetas.
+**Entry points, no un barrel.** Como la superficie pública es _cada_ archivo raíz, un package puede exponer varios entry points pequeños (`index.ts`, `client.ts`, `server.ts`) en vez de canalizar todo por un `index.ts` gigante. Los barrel files que re-exportan un subárbol entero se desaconsejan — mantener los entry points pequeños y esconder la implementación en subcarpetas.
 
-El layering (qué packages pueden depender de cuáles) es un asunto *distinto* y queda como stub comentado en la configuración para que este repo lo rellene.
+El layering (qué packages pueden depender de cuáles) es un asunto _distinto_ y queda como stub comentado en la configuración para que este repo lo rellene.
 
 ## Pasos
 
@@ -67,7 +67,7 @@ Copiar [`dependency-cruiser.config.cjs`](assets/dependency-cruiser.config.cjs) a
 
 Crear un `<packages-root>/example/` commiteado como plantilla de copiar-y-pegar:
 
-- `index.ts` — un entry point. Exportar una función que delega en un archivo interno (para que el package sea visiblemente *profundo*, no un pass-through).
+- `index.ts` — un entry point. Exportar una función que delega en un archivo interno (para que el package sea visiblemente _profundo_, no un pass-through).
 - `lib/impl.ts` — un archivo interno en una **subcarpeta**, importado por `index.ts`, no alcanzable desde fuera.
 - `tests/example.test.ts` — importa **solo** `../index` (un entry point) y aserta contra la función pública.
 

@@ -43,7 +43,7 @@ Crear funciones específicas para cada operación externa en vez de una función
 const api = {
   getUser: (id) => fetch(`/users/${id}`),
   getOrders: (userId) => fetch(`/users/${userId}/orders`),
-  createOrder: (data) => fetch('/orders', { method: 'POST', body: data }),
+  createOrder: (data) => fetch("/orders", { method: "POST", body: data }),
 };
 
 // MAL: Mockear exige lógica condicional dentro del mock
@@ -53,6 +53,7 @@ const api = {
 ```
 
 El enfoque SDK significa:
+
 - Cada mock devuelve una forma específica
 - Sin lógica condicional en el setup de los tests
 - Es más fácil ver qué endpoints ejercita un test

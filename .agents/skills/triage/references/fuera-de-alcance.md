@@ -20,7 +20,7 @@ Un archivo por **concepto**, no por issue. Múltiples issues que piden lo mismo 
 
 El archivo debe escribirse en un estilo relajado y legible — más como un documento de diseño corto que como una entrada de base de datos. Usar párrafos, muestras de código y ejemplos para que el razonamiento quede claro y sea útil para alguien que lo encuentra por primera vez.
 
-```markdown
+````markdown
 # Dark Mode
 
 Este proyecto no soporta dark mode ni theming de cara al usuario.
@@ -51,7 +51,7 @@ interface ThemeConfig {
 - #42 — "Add dark mode support"
 - #87 — "Night theme for accessibility"
 - #134 — "Dark theme option"
-```
+````
 
 ### Nombrar el archivo
 
@@ -83,7 +83,7 @@ El maintainer puede:
 
 ## Cuándo escribir en `.out-of-scope/`
 
-Solo cuando un **enhancement** (no un bug) se *rechaza* como `wontfix`. Esto aplica a las PRs de enhancement exactamente igual que a los issues — una PR rechazada se registra aquí para que la misma petición no vuelva como código fresco.
+Solo cuando un **enhancement** (no un bug) se _rechaza_ como `wontfix`. Esto aplica a las PRs de enhancement exactamente igual que a los issues — una PR rechazada se registra aquí para que la misma petición no vuelva como código fresco.
 
 **No** escribir aquí cuando algo se cierra como `wontfix` por estar **ya implementado**. Eso es una feature construida, no una rechazada; registrarla envenenaría las comprobaciones de deduplicación con falsos rechazos. En su lugar, el comentario de cierre apunta a dónde vive ya la feature.
 

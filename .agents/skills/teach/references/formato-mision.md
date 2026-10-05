@@ -8,17 +8,21 @@
 # Misión: {Tema}
 
 ## Por qué
+
 {1-3 frases. La meta concreta del mundo real que persigue el usuario. ¿Qué cambia en su vida o trabajo cuando tenga este skill? Evitar encuadres abstractos como "entender X" — empujar hacia el resultado subyacente.}
 
 ## El éxito se ve así
+
 - {Una cosa específica y observable que el usuario podrá hacer}
 - {Otra cosa específica}
 - {…}
 
 ## Restricciones
+
 - {Tiempo, presupuesto, compromisos previos, preferencias de aprendizaje, cualquier cosa que acote el enfoque}
 
 ## Fuera de alcance
+
 - {Temas adyacentes que el usuario explícitamente no quiere perseguir ahora — protege la zona de desarrollo próximo}
 ```
 

@@ -63,7 +63,8 @@ module.exports = {
     },
     {
       name: "no-circular",
-      comment: "Sin ciclos de dependencias. Limitar a `^${R}/` para permitir ciclos externos.",
+      comment:
+        "Sin ciclos de dependencias. Limitar a `^${R}/` para permitir ciclos externos.",
       severity: "error",
       from: {},
       to: { circular: true },

@@ -57,7 +57,7 @@ it("gets user by id", () => {
   getUser(
     fromPartial({
       body: { id: "123" },
-    }),
+    })
   );
 });
 ```
@@ -96,11 +96,11 @@ getUser(fromAny({ body: { id: 123 } }));
 
 ## Cuándo usar cada una
 
-| Función         | Caso de uso                                                    |
-| --------------- | -------------------------------------------------------------- |
-| `fromPartial()` | Pasar datos parciales que siguen pasando el typecheck           |
+| Función         | Caso de uso                                                        |
+| --------------- | ------------------------------------------------------------------ |
+| `fromPartial()` | Pasar datos parciales que siguen pasando el typecheck              |
 | `fromAny()`     | Pasar datos intencionalmente incorrectos (conserva autocompletado) |
-| `fromExact()`   | Forzar el objeto completo (cambiar por fromPartial después)     |
+| `fromExact()`   | Forzar el objeto completo (cambiar por fromPartial después)        |
 
 ## Flujo de trabajo
 

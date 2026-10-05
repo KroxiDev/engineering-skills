@@ -12,7 +12,7 @@ Crear el directorio `docs/adr/` de forma diferida — solo cuando se necesite el
 {1-3 frases: cuál es el contexto, qué decidimos y por qué.}
 ```
 
-Eso es todo. Un ADR puede ser un solo párrafo. El valor está en registrar *que* se tomó una decisión y *por qué* — no en rellenar secciones.
+Eso es todo. Un ADR puede ser un solo párrafo. El valor está en registrar _que_ se tomó una decisión y _por qué_ — no en rellenar secciones.
 
 ## Secciones opcionales
 

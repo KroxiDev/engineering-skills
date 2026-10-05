@@ -19,7 +19,7 @@ Un prototipo de UI es mucho más fácil de juzgar cuando está **pegado contra e
 
 La ruta ya existe. Las variantes se renderizan **en la misma ruta**, controladas por un search param `?variant=` en la URL. El data fetching, los params y la auth existentes se quedan — solo cambia el renderizado. Este es el default; elegirlo salvo que haya una razón específica para no hacerlo.
 
-Si el prototipo es para algo que aún no tiene página pero que *viviría naturalmente dentro de una* (una sección nueva del dashboard, una card nueva en la pantalla de ajustes, un paso nuevo en un flujo existente) — eso sigue siendo sub-forma A. Montar las variantes dentro de la página anfitriona.
+Si el prototipo es para algo que aún no tiene página pero que _viviría naturalmente dentro de una_ (una sección nueva del dashboard, una card nueva en la pantalla de ajustes, un paso nuevo en un flujo existente) — eso sigue siendo sub-forma A. Montar las variantes dentro de la página anfitriona.
 
 ### Sub-forma B — una página nueva (último recurso)
 
@@ -59,13 +59,13 @@ Crear un único componente conmutador en la ruta:
 
 ```tsx
 // pseudocódigo — adaptar al framework del proyecto
-const variant = searchParams.get('variant') ?? 'A';
+const variant = searchParams.get("variant") ?? "A";
 return (
   <>
-    {variant === 'A' && <VariantA {...data} />}
-    {variant === 'B' && <VariantB {...data} />}
-    {variant === 'C' && <VariantC {...data} />}
-    <PrototypeSwitcher variants={['A','B','C']} current={variant} />
+    {variant === "A" && <VariantA {...data} />}
+    {variant === "B" && <VariantB {...data} />}
+    {variant === "C" && <VariantC {...data} />}
+    <PrototypeSwitcher variants={["A", "B", "C"]} current={variant} />
   </>
 );
 ```

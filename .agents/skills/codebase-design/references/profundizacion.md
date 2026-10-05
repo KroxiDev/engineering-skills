@@ -18,7 +18,7 @@ Dependencias que tienen sustitutos locales de test (PGLite para Postgres, filesy
 
 Servicios propios al otro lado de un límite de red (microservicios, APIs internas). Definir un **port** (interface) en el seam. El módulo profundo es dueño de la lógica; el transporte se inyecta como **adapter**. Los tests usan un adapter en memoria. Producción usa un adapter HTTP/gRPC/cola.
 
-Forma de la recomendación: *"Definir un port en el seam, implementar un adapter HTTP para producción y un adapter en memoria para testing, de modo que la lógica viva en un solo módulo profundo aunque esté desplegada a través de una red."*
+Forma de la recomendación: _"Definir un port en el seam, implementar un adapter HTTP para producción y un adapter en memoria para testing, de modo que la lógica viva en un solo módulo profundo aunque esté desplegada a través de una red."_
 
 ### 4. Externa real (Mock)
 

@@ -13,7 +13,7 @@ Wayfinder es **planificación** por defecto: cada ticket resuelve una decisión,
 
 ## Referir por nombre
 
-Cada mapa y ticket es un issue, así que tiene un **nombre** — su título. En todo lo que lea el humano — la narración, las Decisiones-hasta-ahora del mapa — referirse a él por ese nombre, nunca por un id, número o slug a secas. Un muro de `#42, #43, #44` es ilegible; los nombres se leen de un vistazo. El id y la URL no desaparecen — un nombre envuelve su enlace — pero viajan *dentro* del nombre, nunca lo sustituyen.
+Cada mapa y ticket es un issue, así que tiene un **nombre** — su título. En todo lo que lea el humano — la narración, las Decisiones-hasta-ahora del mapa — referirse a él por ese nombre, nunca por un id, número o slug a secas. Un muro de `#42, #43, #44` es ilegible; los nombres se leen de un vistazo. El id y la URL no desaparecen — un nombre envuelve su enlace — pero viajan _dentro_ del nombre, nunca lo sustituyen.
 
 ## El Mapa
 
@@ -71,12 +71,12 @@ La respuesta no forma parte del cuerpo — se registra en la resolución (ver [R
 
 ## Tipos de tickets
 
-Cada ticket es o bien **HITL** — human in the loop, trabajado *con* un humano que habla por sí mismo — o **AFK**, conducido por el agente solo. Un ticket HITL solo se resuelve mediante ese intercambio en vivo; el agente nunca suplanta el lado humano (un agente de grilling que responde sus propias preguntas ha roto esto).
+Cada ticket es o bien **HITL** — human in the loop, trabajado _con_ un humano que habla por sí mismo — o **AFK**, conducido por el agente solo. Un ticket HITL solo se resuelve mediante ese intercambio en vivo; el agente nunca suplanta el lado humano (un agente de grilling que responde sus propias preguntas ha roto esto).
 
 - **Research** (AFK): Leer documentación, APIs de terceros o recursos locales como bases de conocimiento para sacar a la superficie un hecho del que depende una decisión. Se resuelve con un **subagente** de `research`. Usar cuando se requiera conocimiento fuera del directorio de trabajo actual.
 - **Prototype** (HITL): Subir la fidelidad de la discusión haciendo un artefacto barato, tosco y concreto ante el que reaccionar — un esquema, un borrador, un stub, o código de UI/lógica vía el skill `prototype`. Enlaza el prototipo como asset. Usar cuando "cómo debería verse" o "cómo debería comportarse" sea la pregunta clave.
 - **Grilling** (HITL): Conversación vía los skills `grilling` y `domain-modeling`, una pregunta por vez. El caso por defecto.
-- **Task** (HITL o AFK): Trabajo manual que debe ocurrir antes de que pueda tomarse una *decisión* — nada que decidir, prototipar o investigar, pero la discusión está bloqueada hasta que se haga. Registrarse en un servicio para poder juzgar su API, aprovisionar accesos, mover datos para poder ver su forma. Es el único tipo que *hace* en vez de decidir — y se gana su lugar desbloqueando una decisión, no entregando el destino. El agente lo conduce solo donde puede (AFK); si no, entrega al humano una checklist precisa (HITL). Se resuelve cuando el trabajo está hecho; la respuesta registra qué se hizo y cualquier hecho resultante (ubicación de credenciales, URLs nuevas, conteos de filas) del que dependan tickets posteriores.
+- **Task** (HITL o AFK): Trabajo manual que debe ocurrir antes de que pueda tomarse una _decisión_ — nada que decidir, prototipar o investigar, pero la discusión está bloqueada hasta que se haga. Registrarse en un servicio para poder juzgar su API, aprovisionar accesos, mover datos para poder ver su forma. Es el único tipo que _hace_ en vez de decidir — y se gana su lugar desbloqueando una decisión, no entregando el destino. El agente lo conduce solo donde puede (AFK); si no, entrega al humano una checklist precisa (HITL). Se resuelve cuando el trabajo está hecho; la respuesta registra qué se hizo y cualquier hecho resultante (ubicación de credenciales, URLs nuevas, conteos de filas) del que dependan tickets posteriores.
 
 ## Niebla de guerra
 

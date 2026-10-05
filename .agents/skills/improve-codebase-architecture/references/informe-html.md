@@ -13,14 +13,24 @@ La revisión arquitectónica se renderiza como un único archivo HTML autoconten
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
       import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-      mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "neutral",
+        securityLevel: "loose",
+      });
     </script>
     <style>
       /* pequeña capa custom para lo que Tailwind no cubre limpiamente:
          líneas de seam discontinuas, puntas de flecha con aire dibujado a mano, etc. */
-      .seam { stroke-dasharray: 4 4; }
-      .leak { stroke: #dc2626; }
-      .deep { background: linear-gradient(135deg, #0f172a, #1e293b); }
+      .seam {
+        stroke-dasharray: 4 4;
+      }
+      .leak {
+        stroke: #dc2626;
+      }
+      .deep {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+      }
     </style>
   </head>
   <body class="bg-stone-50 text-slate-900 font-sans">
@@ -118,6 +128,6 @@ Lenguaje llano, conciso — pero los sustantivos y verbos arquitectónicos viene
 - "Profundizar: una interface, un solo lugar donde testear."
 - "Dos adapters justifican el seam: HTTP en producción, en memoria en tests."
 
-**Los bullets de ganancias** nombran la ganancia en términos del glosario: *"localidad: los bugs se concentran en un módulo"*, *"leverage: una interface, N call sites"*, *"la interface encoge; la implementación absorbe los wrappers"*. No escribir *"más fácil de mantener"* ni *"código más limpio"* — esos términos no están en el glosario y no se ganan su lugar.
+**Los bullets de ganancias** nombran la ganancia en términos del glosario: _"localidad: los bugs se concentran en un módulo"_, _"leverage: una interface, N call sites"_, _"la interface encoge; la implementación absorbe los wrappers"_. No escribir _"más fácil de mantener"_ ni _"código más limpio"_ — esos términos no están en el glosario y no se ganan su lugar.
 
 Sin coberturas, sin carraspeos, sin "cabe señalar que…". Si una frase puede ser un bullet, hacerla bullet. Si un bullet puede recortarse, recortarlo. Si un término no está en el glosario de `codebase-design`, buscar uno que sí esté antes de inventar uno nuevo.

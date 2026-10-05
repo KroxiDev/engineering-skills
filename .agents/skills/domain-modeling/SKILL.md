@@ -5,7 +5,7 @@ description: Construye y afila el modelo de dominio de un proyecto. Usar cuando 
 
 # Modelado de dominio
 
-Construir y afilar activamente el modelo de dominio del proyecto mientras diseñas. Esta es la disciplina *activa* — desafiar términos, inventar escenarios límite y escribir el glosario y las decisiones en el momento en que cristalizan. (Meramente *leer* `CONTEXT.md` para tomar vocabulario no es este skill — eso es un hábito de una línea que cualquier skill puede hacer. Este skill es para cuando estás cambiando el modelo, no solo consumiéndolo.)
+Construir y afilar activamente el modelo de dominio del proyecto mientras diseñas. Esta es la disciplina _activa_ — desafiar términos, inventar escenarios límite y escribir el glosario y las decisiones en el momento en que cristalizan. (Meramente _leer_ `CONTEXT.md` para tomar vocabulario no es este skill — eso es un hábito de una línea que cualquier skill puede hacer. Este skill es para cuando estás cambiando el modelo, no solo consumiéndolo.)
 
 ## Estructura de archivos
 

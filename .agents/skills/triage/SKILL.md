@@ -60,7 +60,7 @@ Consultar el issue tracker y presentar tres cubetas, lo más antiguo primero:
 2. **`needs-triage`** — evaluación en curso.
 3. **`needs-info` con actividad del reportante posterior a las últimas notas de triage** — necesita re-evaluación.
 
-Cuando las PRs estén en alcance, incluir las PRs externas en estas cubetas y etiquetar cada línea `[PR]` o `[issue]`. El descubrimiento saca a la superficie solo PRs *externas* (la configuración del tracker define quién cuenta como externo) — la PR en curso de un colaborador no es trabajo de triage. Este filtro es solo para el descubrimiento; una PR nombrada explícitamente siempre se tría, sea de quien sea.
+Cuando las PRs estén en alcance, incluir las PRs externas en estas cubetas y etiquetar cada línea `[PR]` o `[issue]`. El descubrimiento saca a la superficie solo PRs _externas_ (la configuración del tracker define quién cuenta como externo) — la PR en curso de un colaborador no es trabajo de triage. Este filtro es solo para el descubrimiento; una PR nombrada explícitamente siempre se tría, sea de quien sea.
 
 Mostrar conteos y un resumen de una línea por ítem. Dejar que el maintainer elija.
 
@@ -78,8 +78,8 @@ Mostrar conteos y un resumen de una línea por ítem. Dejar que el maintainer el
    - `ready-for-agent` — publicar un comentario con el brief de agente ([brief-para-agente.md](references/brief-para-agente.md)).
    - `ready-for-human` — misma estructura que un brief de agente, pero anotando por qué no puede delegarse (juicios de valor, acceso externo, decisiones de diseño, testing manual).
    - `needs-info` — publicar notas de triage (plantilla abajo).
-   - `wontfix` — cerrar, con el comentario dependiendo del *porqué*:
-     - **Ya implementado** — el cambio ya existe en el codebase. Señalar dónde vive; **no** escribir en `.out-of-scope/` (esa KB es para peticiones *rechazadas*, no construidas).
+   - `wontfix` — cerrar, con el comentario dependiendo del _porqué_:
+     - **Ya implementado** — el cambio ya existe en el codebase. Señalar dónde vive; **no** escribir en `.out-of-scope/` (esa KB es para peticiones _rechazadas_, no construidas).
      - **Rechazado (bug)** — explicación educada, y cerrar.
      - **Rechazado (enhancement)** — escribir en `.out-of-scope/`, enlazarlo desde un comentario, y cerrar ([fuera-de-alcance.md](references/fuera-de-alcance.md)).
    - `needs-triage` — aplicar el rol. Comentario opcional si hay progreso parcial.
