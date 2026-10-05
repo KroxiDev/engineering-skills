@@ -1,10 +1,10 @@
 # Engineering Skills
 
-Colección de **34 skills por plataforma** de ingeniería en español neutro para [OpenAI Codex](https://developers.openai.com/codex/) y [Claude Code](https://code.claude.com/docs). La revisión independiente se llama `gpt-review` en Codex y `claude-review` en Claude Code.
+Colección de **35 skills por plataforma** de ingeniería en español neutro para [OpenAI Codex](https://developers.openai.com/codex/) y [Claude Code](https://code.claude.com/docs). La revisión independiente se llama `gpt-review` en Codex y `claude-review` en Claude Code.
 
 Cubre el ciclo completo: diseño de codebase, modelado de dominio, TDD, revisión de código, diagnóstico de bugs, planificación de trabajo grande, triage, traspasos entre sesiones y construcción de skills.
 
-`.agents/skills` es la fuente canónica para Codex. Cada skill añade `agents/openai.yaml` con sus metadatos de invocación; Claude Code consume wrappers mínimos generados en `skills/`, que conservan sus campos específicos sin contaminar el frontmatter que valida Codex. `claude-review` se genera como una adaptación completa y autocontenida del mismo flujo de revisión, con Opus 5 Max.
+`.agents/skills` es la fuente canónica para Codex. Cada skill añade `agents/openai.yaml` con sus metadatos de invocación; Claude Code consume wrappers mínimos generados en `skills/`, que conservan sus campos específicos sin contaminar el frontmatter que valida Codex. `claude-review` se genera como una adaptación completa y autocontenida del mismo flujo de revisión, con Opus 5.5 Max.
 
 ## Instalación
 
@@ -72,8 +72,8 @@ Los marcados `auto` se activan solos cuando la descripción encaja con la tarea.
 | `domain-modeling`               | auto       | Construye y afila el modelo de dominio: glosario, contexto y ADRs.                    |
 | `git-guardrails-claude-code`    | ver nota   | Instala hooks `PreToolUse` de Claude Code que bloquean git peligroso.                 |
 | `git-guardrails-codex`          | auto       | Protege Git en sesiones de Codex vía política en `AGENTS.md` y un verificador manual. |
-| `git-worktree`                 | usuario    | Prepara worktrees exclusivos para implementar tareas simultáneas del mismo proyecto. |
-| `gpt-review` / `claude-review`  | usuario    | Revisión independiente: GPT-6 Astra Max en Codex; Opus 5 Max en Claude Code.          |
+| `git-worktree`                  | usuario    | Prepara worktrees exclusivos para implementar tareas simultáneas del mismo proyecto.  |
+| `gpt-review` / `claude-review`  | usuario    | Revisión independiente: GPT-6 Astra Max en Codex; Opus 5.5 Max en Claude Code.        |
 | `grill-me`                      | usuario    | Entrevista rigurosa por rondas para afilar un plan o diseño.                          |
 | `grill-with-docs`               | usuario    | Como `grill-me`, creando ADRs y glosario sobre la marcha.                             |
 | `grilling`                      | auto       | Interroga un plan, decisión o idea hasta el entendimiento compartido.                 |
@@ -85,6 +85,7 @@ Los marcados `auto` se activan solos cuando la descripción encaja con la tarea.
 | `research`                      | auto       | Investiga contra fuentes primarias y captura los hallazgos como Markdown.             |
 | `request-refactor-plan`         | usuario    | Planifica un refactor en commits pequeños y publica el plan como issue.               |
 | `resolving-merge-conflicts`     | auto       | Resuelve un conflicto de merge o rebase en progreso.                                  |
+| `retro`                         | usuario    | Revisa una sesión y propone mejoras al entorno del agente, ordenadas por severidad.   |
 | `setup-pre-commit`              | auto       | Configura Husky con lint-staged, typecheck y tests.                                   |
 | `setup-ts-deep-modules`         | usuario    | Conecta dependency-cruiser para ocultar internals detrás de entry points.             |
 | `tdd`                           | auto       | Desarrollo guiado por tests, en ciclos red-green-refactor.                            |
@@ -111,7 +112,7 @@ La mayoría de los skills adaptan [mattpocock/skills](https://github.com/mattpoc
 
 `caveman` es una adaptación del skill [caveman](https://github.com/JuliusBrussee/caveman) de **Julius Brussee** (MIT). Se mantienen el nombre y los nombres de los niveles, se restringe la invocación al usuario, y se retiran los tres modos `wenyan` (compresión en chino clásico), que no aportan nada a un set en español.
 
-`gpt-review` y su variante `claude-review` adaptan el [skill original](https://github.com/davidondrej/skills/blob/main/skills/agent-orchestration/gpt-review/SKILL.md) de **David Ondrej** al español, con invocación explícita y sin dependencias de otros skills. Usan GPT-6 Astra Max en Codex y Opus 5 Max en Claude Code; requieren una herramienta que pueda lanzar el modelo correspondiente con esfuerzo máximo.
+`gpt-review` y su variante `claude-review` adaptan el [skill original](https://github.com/davidondrej/skills/blob/main/skills/agent-orchestration/gpt-review/SKILL.md) de **David Ondrej** al español, con invocación explícita y sin dependencias de otros skills. Usan GPT-6 Astra Max en Codex y Opus 5.5 Max en Claude Code; requieren una herramienta que pueda lanzar el modelo correspondiente con esfuerzo máximo.
 
 `git-worktree` adapta el [skill original](https://github.com/davidondrej/skills/blob/main/skills/agent-orchestration/git-worktree/SKILL.md) de **David Ondrej** para implementar tareas simultáneas en worktrees exclusivos. Se invoca explícitamente, prepara el entorno de cada tarea y mantiene las revisiones por separado.
 

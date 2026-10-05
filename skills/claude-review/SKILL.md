@@ -1,6 +1,6 @@
 ---
 name: claude-review
-description: Revisión independiente de código con Opus 5 Max e informe íntegro en español. Solo por invocación explícita del usuario.
+description: Revisión independiente de código con Opus 5.5 Max e informe íntegro en español. Solo por invocación explícita del usuario.
 license: MIT
 disable-model-invocation: true
 ---
@@ -11,7 +11,7 @@ Ejecuta este skill solo cuando el usuario lo invoque por su nombre. Cada invocac
 
 1. **Delimita el alcance.** Usa los archivos, cambios, rama o PR indicados. Si no se especifican, revisa el trabajo actual de la conversación, incluidos los cambios sin commit y archivos nuevos pertinentes. Expón el alcance y la base de comparación; pregunta solo si no puedes determinarlos.
 
-2. **Lanza un único revisor con Opus 5 Max.** Usa un mecanismo de subagentes que permita seleccionar ese modelo y esfuerzo. En Claude Code, configura el revisor con `model: "claude-opus-5"` y `effort: "max"` (por CLI, `--model claude-opus-5 --effort max`) y verifica la selección efectiva. Si el usuario indica otra herramienta, úsala conservando modelo y esfuerzo. Si no están disponibles, informa el bloqueo y detén la revisión; no sustituyas el modelo silenciosamente.
+2. **Lanza un único revisor con Opus 5.5 Max.** Usa un mecanismo de subagentes que permita seleccionar ese modelo y esfuerzo. En Claude Code, configura el revisor con `model: "claude-opus-5-5"` y `effort: "max"` (por CLI, `--model claude-opus-5-5 --effort max`) y verifica la selección efectiva. Si el usuario indica otra herramienta, úsala conservando modelo y esfuerzo. Si no están disponibles, informa el bloqueo y detén la revisión; no sustituyas el modelo silenciosamente.
 
    Dale acceso al mismo directorio de trabajo y estado de los archivos. Incluye en el encargo el alcance, la base de comparación, los requisitos, las instrucciones del repositorio y las comprobaciones ya realizadas. Presenta ese contexto de forma neutral, sin anticipar hallazgos ni orientar hacia una solución.
 

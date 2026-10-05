@@ -47,7 +47,7 @@ function generate(root, ...args) {
   );
 }
 
-test("genera claude-review con Opus 5 Max y conserva gpt-review en Codex", (t) => {
+test("genera claude-review con Opus 5.5 Max y conserva gpt-review en Codex", (t) => {
   const root = createRepository(t);
   const canonicalPath = join(root, ".agents/skills/gpt-review/SKILL.md");
   const original = readFileSync(canonicalPath, "utf8");
@@ -66,8 +66,8 @@ test("genera claude-review con Opus 5 Max y conserva gpt-review en Codex", (t) =
   );
   assert.match(review, /^name: claude-review$/mu);
   assert.match(review, /^disable-model-invocation: true$/mu);
-  assert.match(review, /Opus 5 Max/u);
-  assert.match(review, /model: "claude-opus-5"/u);
+  assert.match(review, /Opus 5\.5 Max/u);
+  assert.match(review, /model: "claude-opus-5-5"/u);
   assert.match(review, /effort: "max"/u);
   assert.doesNotMatch(
     review,
@@ -88,7 +88,7 @@ test("la comprobación detecta cambios en claude-review sin sobrescribirlos", (t
   const reviewPath = join(root, "skills/claude-review/SKILL.md");
   assert.ok(existsSync(reviewPath));
   const edited = readFileSync(reviewPath, "utf8").replaceAll(
-    "Opus 5 Max",
+    "Opus 5.5 Max",
     "Otro modelo"
   );
   writeFileSync(reviewPath, edited);

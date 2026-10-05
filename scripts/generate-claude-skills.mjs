@@ -32,6 +32,7 @@ const CLAUDE_OVERRIDES = {
     disableModelInvocation: true,
   },
   "request-refactor-plan": { disableModelInvocation: true },
+  retro: { disableModelInvocation: true },
   "setup-ts-deep-modules": { disableModelInvocation: true },
   teach: {
     argumentHint: "¿Sobre qué te gustaría aprender?",
@@ -71,16 +72,16 @@ function claudeReview(metadata, body) {
     );
   }
   const claudeSettings =
-    'En Claude Code, configura el revisor con `model: "claude-opus-5"` y `effort: "max"` (por CLI, `--model claude-opus-5 --effort max`) y verifica la selección efectiva.';
+    'En Claude Code, configura el revisor con `model: "claude-opus-5-5"` y `effort: "max"` (por CLI, `--model claude-opus-5-5 --effort max`) y verifica la selección efectiva.';
   return [
     "---",
     metadata
       .replace(/^name: gpt-review$/mu, "name: claude-review")
-      .replaceAll("GPT-6 Astra Max", "Opus 5 Max"),
+      .replaceAll("GPT-6 Astra Max", "Opus 5.5 Max"),
     "---",
     body
       .replace("# Revisión con GPT", "# Revisión con Claude")
-      .replaceAll("GPT-6 Astra Max", "Opus 5 Max")
+      .replaceAll("GPT-6 Astra Max", "Opus 5.5 Max")
       .replace(codexSettings, claudeSettings),
   ].join("\n");
 }

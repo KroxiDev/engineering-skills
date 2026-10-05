@@ -1,0 +1,7 @@
+interface:
+  display_name: "Retro"
+  short_description: "Retrospectiva de una sesión de programación"
+  default_prompt: "Usa $retro para hacer una retrospectiva de esta sesión."
+
+policy:
+  allow_implicit_invocation: false
